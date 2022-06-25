@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 function First() {
   const [visible, setVisible] = useState(false);
+  const [firstVisible, setFirstVisible] = useState(false);
 
   const firstToggle = () => {
     setVisible((vis) => !vis);
@@ -41,10 +42,32 @@ function First() {
             className={`px-4 py-2 font-normalgi text-sm bg-white text-slate-500 
                   dark:bg-slate-500 dark:text-white dark:ring-white/10 dark:ring-inset
                     rounded-md shadow-sm ring-1 ring-slate-700/5  border-indigo-400 border-2 border-none`}
-            onClick={handle_1_5}
+            onClick={() => {
+              if (firstVisible) {
+                setFirstVisible(false);
+                return;
+              }
+              handle_1_5();
+              setFirstVisible(true);
+            }}
           >
             1-5
           </button>
+          {firstVisible && (
+            <pre>
+              const enrollment = {'[\n'}
+              {' {'} enrolled: 1, grade: 80 {'},\n'}
+              {' {'} enrolled: 2, grade: 80 {'},\n'}
+              {' {'} enrolled: 1, grade: 80 {'},\n'}
+              {' {'} enrolled: 2, grade: 70 {'},\n'}
+              {' {'} enrolled: 1, grade: 80 {'},\n'}
+              {']; \n'}
+              const meanByGradeOnEnrolled2 = _.chain(enrollment){'\n'}
+              {' .'}filter((st) ={'>'} st.enrolled === 2){'\n'}
+              {' .'}meanBy((st) ={'>'} st.grade){'\n'}
+              {' .'}value(){';\n'}
+            </pre>
+          )}
         </div>
       )}
     </div>
