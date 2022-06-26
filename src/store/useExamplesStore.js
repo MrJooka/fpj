@@ -7,9 +7,7 @@ const useExamplesStore = create(
     examples: {
       first: {
         5: {
-          value: `
-          \`\`\`javascript
-const enrollment = [
+          value: `const enrollment = [
     { enrolled: 1, grade: 80 },
     { enrolled: 2, grade: 80 },
     { enrolled: 1, grade: 80 },
@@ -20,9 +18,7 @@ const enrollment = [
 const meanByGradeOnEnrolled2 = _.chain(enrollment)
   .filter((st) => st.enrolled === 2)
   .meanBy((st) => st.grade)
-  .value();
-  \`\`\`
-          `,
+  .value();`,
           fn: () => {
             const enrollment = [
               { enrolled: 1, grade: 80 },

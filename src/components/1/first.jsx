@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import React, { useState } from 'react';
+import useExamplesStore from '../../store/useExamplesStore';
 
 function First() {
   const [visible, setVisible] = useState(false);
@@ -8,6 +9,8 @@ function First() {
   const firstToggle = () => {
     setVisible((vis) => !vis);
   };
+
+  const example = useExamplesStore((state) => state.examples.first['5'].value);
 
   const handle_1_5 = () => {
     const enrollment = [
@@ -54,18 +57,8 @@ function First() {
             1-5
           </button>
           {firstVisible && (
-            <pre>
-              const enrollment = {'[\n'}
-              {' {'} enrolled: 1, grade: 80 {'},\n'}
-              {' {'} enrolled: 2, grade: 80 {'},\n'}
-              {' {'} enrolled: 1, grade: 80 {'},\n'}
-              {' {'} enrolled: 2, grade: 70 {'},\n'}
-              {' {'} enrolled: 1, grade: 80 {'},\n'}
-              {']; \n'}
-              const meanByGradeOnEnrolled2 = _.chain(enrollment){'\n'}
-              {' .'}filter((st) ={'>'} st.enrolled === 2){'\n'}
-              {' .'}meanBy((st) ={'>'} st.grade){'\n'}
-              {' .'}value(){';\n'}
+            <pre className="block w-full p-2 whitespace-pre-wrap font-mono break-words bg-slate-800 text-white text-sm">
+              <code>{example}</code>
             </pre>
           )}
         </div>
